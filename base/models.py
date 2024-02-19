@@ -31,7 +31,10 @@ class Message(models.Model):
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True) # every time the saved method is called it takes a timestamp and save it here automatically.
     created = models.DateTimeField(auto_now_add=True) # It only takes a timestamp when the instance is created (not every time is saved)
-
+    
+    class Meta:
+        ordering = ['-updated', '-created']
+    
     def __str__(self) -> str:
         return self.body[0:50] #trimming the message up to 50 characters.
 
